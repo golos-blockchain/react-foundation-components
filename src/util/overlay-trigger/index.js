@@ -148,8 +148,10 @@ export default class OverlayTrigger extends Component {
 
   constructor(props) {
     super(props);
-    this.mountNode = document.createElement('div');
-    document.body.appendChild(this.mountNode);
+    if (process.env.BROWSER) {
+      this.mountNode = document.createElement('div');
+      document.body.appendChild(this.mountNode);
+    }
   }
 
   state = {
@@ -371,7 +373,7 @@ export default class OverlayTrigger extends Component {
     return (
       <Fragment>
         {clonedChild}
-        {createPortal(this.overlay, this.mountNode)}
+        {process.env.BROWSER && createPortal(this.overlay, this.mountNode)}
       </Fragment>
     );
   }
