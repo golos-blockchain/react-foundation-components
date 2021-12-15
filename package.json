@@ -47,7 +47,7 @@
     "babel-runtime": "^6.25.0",
     "classnames": "^2.2.5",
     "dom-helpers": "^2.4.0",
-    "foundation-sites": "~6.2.4",
+    "foundation-sites": "~6.7.4",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "prop-types-extra": "^1.1.1",
