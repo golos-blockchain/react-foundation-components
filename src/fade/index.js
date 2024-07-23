@@ -27,7 +27,7 @@ Fade.propTypes = {
   className: PropTypes.string,
 };
 Fade.defaultProps = {
-  timeout: 150,
+  timeout: 100,
 };
 
 export default Fade;

@@ -343,7 +343,7 @@ export default class OverlayTrigger extends Component {
         rootClose={closeOnClickOutside}
         show={show}
         target={this.getOverlayTarget}
-        transition={this.transition}
+        transition={this._transition}
       >
         {clonedOverlay}
       </Overlay>
