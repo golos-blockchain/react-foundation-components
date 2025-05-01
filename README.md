@@ -8,6 +8,29 @@ I like [React](https://facebook.github.io/react). I like [CSS Modules](https://g
 
 ## Installation
 
+#### Actual (Golos Blockchain fork.)
+
+Download [this script](https://github.com/golos-blockchain/ui-wallet/blob/master/git-install.js). (At current time this supports Yarn only.)  
+Add this script into root folder of your project, where `package.json`.
+
+Add following into `package.json`:
+
+```js
+"scripts": {
+    ...
+    "preinstall": "node git-install.js",
+    ...
+},
+...
+"gitDependencies": {
+    "react-foundation-components": "https://github.com/golos-blockchain/react-foundation-components#ff2e48fd5ec1b587899bd67d686d0889da4e4ab1"
+},
+```
+
+It will install it when you will run `yarn install`.
+
+#### Old npm version
+
 ```
 npm install --save react-foundation-components
 ```
@@ -52,6 +75,19 @@ Here are some example applications that use global scoped class name components:
  * Uses Foundation (Flexbox Version) from CDN - https://github.com/aruberto/react-foundation-components/tree/master/examples/cdn-flex
  * Requires react-foundation-components/lib/\_foundation.scss with global-flexbox set to false - https://github.com/aruberto/react-foundation-components/tree/master/examples/global
  * Requires react-foundation-components/lib/\_foundation.scss with global-flexbox set to true - https://github.com/aruberto/react-foundation-components/tree/master/examples/global-flex
+
+## Building from source
+
+(Golos-Blockchain, 2025)
+
+```
+apt-get install libpng-dev
+
+git clone https://github.com/golos-blockchain/react-foundation-components/
+cd react-foundation-components
+npm install
+npm build
+```
 
 ## Thanks
 
