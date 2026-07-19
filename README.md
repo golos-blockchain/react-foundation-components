@@ -86,7 +86,7 @@ apt-get install libpng-dev
 git clone https://github.com/golos-blockchain/react-foundation-components/
 cd react-foundation-components
 npm install
-npm build
+npm run build
 ```
 
 ## Thanks

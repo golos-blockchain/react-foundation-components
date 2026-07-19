@@ -5,7 +5,7 @@ import React, {
   isValidElement,
   Fragment,
 } from 'react';
-import { findDOMNode, unmountComponentAtNode, createPortal } from 'react-dom';
+import { createPortal } from 'react-dom';
 import elementType from 'prop-types-extra/lib/elementType';
 import componentOrElement from 'prop-types-extra/lib/componentOrElement';
 import Overlay from 'react-overlays/lib/Overlay';
@@ -153,6 +153,7 @@ export default class OverlayTrigger extends Component {
       this.mountNode = document.createElement('div');
       document.body.appendChild(this.mountNode);
     }
+    this.targetRef = React.createRef();
   }
 
   state = {
@@ -172,15 +173,14 @@ export default class OverlayTrigger extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
-    unmountComponentAtNode(this.mountNode);
     document.body.removeChild(this.mountNode);
     this.mountNode = null;
   }
 
-  getOverlayTarget = () => findDOMNode(this);
+  getOverlayTarget = () => this.targetRef.current;
 
   getOverlayContainer = () =>
-    getContainer(this.props.container, ownerDocument(this).body);
+    getContainer(this.props.container, ownerDocument(this.targetRef.current).body);
 
   handleAnyClick = debounce((showClick) => {
     const { showClick: showClickPrev } = this.state;
@@ -364,9 +364,9 @@ export default class OverlayTrigger extends Component {
     let clonedChild = null;
 
     if (isValidElement(children)) {
-      clonedChild = cloneElement(children, childProps);
+      clonedChild = cloneElement(children, { ...childProps, ref: this.targetRef });
     } else {
-      clonedChild = <span {...childProps}>{children}</span>;
+      clonedChild = <span {...childProps} ref={this.targetRef}>{children}</span>;
     }
 
     this.overlay = this.createOverlay();
